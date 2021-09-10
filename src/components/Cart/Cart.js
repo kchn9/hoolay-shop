@@ -31,7 +31,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
                     Kwota zamówienia: {Utils.beautifyFormattedPrice(cart.subtotal.formatted_with_symbol)}
                 </Typography>
                 <div>
-                    <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Pusty koszyk</Button>
+                    <Button className={classes.emptyButton} size="large" type="button" variant="outlined" color="secondary" onClick={handleEmptyCart}>Wyczyść koszyk</Button>
                     <Button component={Link} to="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Zamów i zapłać</Button>
                 </div>
             </div>

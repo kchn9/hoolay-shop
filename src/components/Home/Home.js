@@ -22,7 +22,7 @@ const Home = ({ featured }) => {
                 <Grid container justifyContent="center" spacing={4}>
                     {
                         featured.map((product) => (
-                            <Grid key={product.id} item xs={12} md={6} lg={4}>
+                            <Grid key={product.id} item xs={10} sm={5} xl={3}>
                                 <FeaturedProduct product={product}/>
                             </Grid>
                         ))
