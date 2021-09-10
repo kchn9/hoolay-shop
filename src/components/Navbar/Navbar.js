@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, Menu, MenuItem, Typography } from '@material-ui/core';
-import { ShoppingCart, Storefront } from '@material-ui/icons';
+import { AppBar, Toolbar, IconButton, Badge, Menu, MenuItem, Typography, InputBase } from '@material-ui/core';
+import { ShoppingCart, Storefront, Search } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 
 import srcLogo from '../../assets/hoolay-logo.png';
@@ -17,10 +17,27 @@ const Navbar = ({ totalItems }) => {
                     <Link to='/'>
                         <img src={srcLogo} alt="Hoolay" height="80px" className={classes.image} />
                     </Link>
-                    <div className={classes.grow} />
-                    <IconButton component={Link} to='/products' aria-label="Pokaż towary w koszyku" color="inherit">
+                    <div className={classes.grow}/>
+                    {location.pathname !== '/products' && (
+                    <IconButton component={Link} to='/products' aria-label="Pokaż sklep" color="inherit">
                         <Storefront />
                     </IconButton>
+                    )}
+                    {location.pathname === '/products' && (
+                    <div className={classes.search}>
+                        <div className={classes.searchIcon}>
+                        <Search />
+                        </div>
+                        <InputBase
+                        placeholder="Szukasz czegoś?"
+                        classes={{
+                            root: classes.inputRoot,
+                            input: classes.inputInput,
+                        }}
+                        inputProps={{ 'aria-label': 'Szukaj' }}
+                        />
+                    </div>
+                    )}
                     {location.pathname === '/products' && (
                     <div className={classes.button}>
                         <IconButton component={Link} to='/cart' aria-label="Pokaż towary w koszyku" color="inherit">

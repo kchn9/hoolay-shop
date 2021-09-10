@@ -1,4 +1,4 @@
-import { makeStyles, fade } from '@material-ui/core/styles';
+import { makeStyles, alpha } from '@material-ui/core/styles';
 
 const drawerWidth = 0;
 
@@ -32,14 +32,14 @@ export default makeStyles((theme) => ({
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
+        backgroundColor: alpha(theme.palette.common.white, 0.15),
         '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
+            backgroundColor: alpha(theme.palette.common.white, 0.25),
         },
-        marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(1),
             width: 'auto',
         },
     },
@@ -61,8 +61,11 @@ export default makeStyles((theme) => ({
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
+        [theme.breakpoints.up('sm')]: {
+            width: '0ch',
+            '&:focus': {
+                width: '24ch',
+            },
         },
     },
 }));
