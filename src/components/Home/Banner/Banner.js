@@ -8,10 +8,10 @@ const Banner = () => {
     const classes = useStyles();
 
     return (
-        <Box>
+        <figure className={classes.content}>
             <img className={classes.image} src={srcPhoto} alt="Mezyczyna pozujący z hulajnogą elektryczną"></img>
-            <Typography className={classes.text} variant="h1">Hoolay</Typography>
-        </Box>
+            <Typography className={classes.caption} component="figcaption" variant="caption">Hoolay</Typography>
+        </figure>
     )
 }
 

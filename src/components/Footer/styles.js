@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
     root: {
         position: 'relative',
         bottom: 0,
-        margin: '100px auto 75`px auto',
+        margin: '100px auto 75px auto',
         backgroundColor: theme.palette.grey[800],
 
     },

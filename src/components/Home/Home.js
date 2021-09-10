@@ -12,8 +12,8 @@ const Home = ({ featured }) => {
     return (
         <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Grid container alignItems="center" spacing={4} direction="column">
-                <Grid item>
+            <Grid container spacing={4} justifyContent="center">
+                <Grid item xs={12}>
                     <Banner />
                 </Grid>
                 <Grid item>
