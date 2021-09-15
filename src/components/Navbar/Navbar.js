@@ -1,32 +1,38 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, Menu, MenuItem, Typography, InputBase } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Badge, Menu, MenuItem, Typography, InputBase, Grid } from '@material-ui/core';
 import { ShoppingCart, Storefront, Search } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 
-import srcLogo from '../../assets/hoolay-logo.png';
 import useStyles from './styles';
 
-const Navbar = ({ totalItems }) => {
+const Navbar = ({ totalItems, categories }) => {
     const classes = useStyles();
     const location = useLocation();
 
     return (
         <>
-            <AppBar position="fixed" className={classes.appBar} color="inherit">
+            <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <Link to='/'>
-                        <img src={srcLogo} alt="Hoolay" height="80px" className={classes.image} />
-                    </Link>
-                    <div className={classes.grow}/>
-                    {location.pathname !== '/products' && (
-                    <IconButton component={Link} to='/products' aria-label="Pokaż sklep" color="inherit">
+                    <Typography className={classes.title} component={Link} to={location.pathname.startsWith('/products') ? '/products' : '/'} variant="h4">Hoolay</Typography>
+                    <div style={{ flexGrow: 1 }} />
+                    {!location.pathname.startsWith('/products') && (
+                    <IconButton component={Link} to='/products' aria-label="Pokaż sklep" color="secondary">
                         <Storefront />
                     </IconButton>
                     )}
-                    {location.pathname === '/products' && (
+                    {location.pathname.startsWith('/products') && (
+                    <Grid container component='ul' justifyContent="flex-start" alignItems="center" className={classes.categories}>
+                        {categories.map(category => (
+                            <Grid item component='li' key={category.id}>
+                                <Link className={classes.catLink} to={`/products/${category.slug}`}>{category.name}</Link>
+                            </Grid>
+                        ))}
+                    </Grid>
+                    )}
+                    {location.pathname.startsWith('/products') && (
                     <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                        <Search />
+                        <div aria-label="Szukaj" className={classes.searchIcon}>
+                            <Search />
                         </div>
                         <InputBase
                         placeholder="Szukasz czegoś?"
@@ -38,7 +44,7 @@ const Navbar = ({ totalItems }) => {
                         />
                     </div>
                     )}
-                    {location.pathname === '/products' && (
+                    {location.pathname.startsWith('/products') && (
                     <div className={classes.button}>
                         <IconButton component={Link} to='/cart' aria-label="Pokaż towary w koszyku" color="inherit">
                             <Badge badgeContent={totalItems} color="secondary">

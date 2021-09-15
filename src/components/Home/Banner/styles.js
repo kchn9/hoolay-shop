@@ -1,15 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
     content: {
         position: 'relative',
-        marginBottom: 0,
+        margin: 0,
     },
     image: {
         position: 'relative',
         height: '100%',
         width: '100%',
-        filter: 'grayscale(88%)',
+        filter: 'grayscale(90%)',
     },
     caption: {
         position: 'absolute',
@@ -17,6 +17,7 @@ export default makeStyles(() => ({
         left: "10%",
         zIndex: 2,
         fontSize: '6rem',
+        color: theme.palette.text.secondary,
         transform: 'translate(-10%, -35%)',
         '&::before': {
             content: "''",

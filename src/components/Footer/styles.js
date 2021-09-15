@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
     root: {
         position: 'relative',
         bottom: 0,
-        margin: '100px auto 75px auto',
+        margin: '100px 40px',
         backgroundColor: theme.palette.grey[800],
 
     },
@@ -21,7 +21,7 @@ export default makeStyles((theme) => ({
         backgroundColor: theme.palette.grey[900],
     },
     copyright: {
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.text.primary,
     },
     left: {
         flexGrow: 1,

@@ -5,7 +5,7 @@ import Utils from '../../../lib/Utils';
 
 import useStyles from './styles';
 
-const Product = ({ product, onAddToCart }) => {
+const Product = ({ product, onAddToCart = (() => {}), displayDesc, displayAction }) => {
     const classes = useStyles();
 
     return (
@@ -16,17 +16,19 @@ const Product = ({ product, onAddToCart }) => {
                     <Typography variant="h5" gutterBottom>
                         {product.name}
                     </Typography>
-                    <Typography variant="h5">
+                    <Typography variant="h6">
                         {Utils.beautifyFormattedPrice(product.price.formatted_with_symbol)}
                     </Typography>
                 </div>
-                <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" />
+                {displayDesc && <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" />}
             </CardContent>
-            <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label="Dodaj do koszyka" onClick={() => {onAddToCart(product.id, 1)}}>
-                    <AddShoppingCart />
-                </IconButton>
-            </CardActions>
+            {displayAction && (
+                <CardActions disableSpacing className={classes.cardActions}>
+                    <IconButton aria-label="Dodaj do koszyka" onClick={() => {onAddToCart(product.id, 1)}}>
+                        <AddShoppingCart />
+                    </IconButton>
+                </CardActions>
+            )}
         </Card>
     )
 }

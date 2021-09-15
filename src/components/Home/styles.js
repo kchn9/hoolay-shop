@@ -2,13 +2,19 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
-    content: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.default,
-      padding: theme.spacing(1),
-      minHeight: "75vh",
-    },
     root: {
       flexGrow: 1,
+    },
+    content: {
+      backgroundColor: theme.palette.background.secondary,
+    },
+    subtitle: {
+      padding: theme.spacing(4),
+      color: theme.palette.text.secondary,
+      fontWeight: '600',
+    },
+    products: {
+      paddingBottom: theme.spacing(6),
+      margin: '0',
     }
   }));

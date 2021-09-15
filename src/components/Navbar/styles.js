@@ -12,10 +12,10 @@ export default makeStyles((theme) => ({
         },
     },
     title: {
-        flexGrow: 1,
         alignItems: 'center',
         display: 'flex',
         textDecoration: 'none',
+        color: theme.palette.text.primary,
     },
     image: {
         marginRight: '10px',
@@ -25,9 +25,6 @@ export default makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
-    },
-    grow: {
-        flexGrow: 1,
     },
     search: {
         position: 'relative',
@@ -42,9 +39,27 @@ export default makeStyles((theme) => ({
             marginLeft: theme.spacing(1),
             width: 'auto',
         },
+        margin: theme.spacing(0, 5),
+    },
+    categories: {
+        listStyle: 'none',
+    },
+    catLink: {
+        textDecoration: 'underline',
+        textDecorationColor: 'rgba(255, 255, 255, 0.3)',
+        textUnderlineOffset: '2px',
+        color: theme.palette.text.primary,
+        margin: theme.spacing(0, 4),
+        fontSize: '1.1rem',
+        transition: 'color 100ms, text-decoration 200ms, ease-in',
+        '&:hover': {
+            color: theme.palette.secondary.main,
+            textDecorationColor: theme.palette.secondary.main,
+        }
     },
     searchIcon: {
-        padding: theme.spacing(0, 2),
+        padding: theme.spacing(2),
+        color: theme.palette.secondary.main,
         height: '100%',
         position: 'absolute',
         pointerEvents: 'none',
@@ -62,9 +77,9 @@ export default makeStyles((theme) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            width: '0ch',
+            width: '16ch',
             '&:focus': {
-                width: '24ch',
+                width: '32ch',
             },
         },
     },
