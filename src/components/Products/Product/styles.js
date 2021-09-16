@@ -6,8 +6,8 @@ export default makeStyles(() => ({
     },
     media: {
         height: 0,
-        paddingTop: '127.77%', // image ratio
-        backgroundPositionY: '100%' // image position
+        paddingTop: '75%', // image ratio
+        backgroundPositionY: '50%' // image position
     },
     cardActions: {
         display: 'flex',

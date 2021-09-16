@@ -16,5 +16,5 @@ export default makeStyles((theme) => ({
     products: {
       paddingBottom: theme.spacing(6),
       margin: '0',
-    }
+    },
   }));

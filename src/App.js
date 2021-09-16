@@ -13,24 +13,19 @@ const App = () => {
             const newCategories = respond.data;
             const remId = newCategories.findIndex(category => category.slug === 'polecane'); //id of featured cat
             newCategories.splice(remId, 1)
-            setCategories(newCategories);
+            setCategories(newCategories.reverse());
         })
     }
 
     const [featured, setFeatured] = useState([]);
-    // returns all products if no slug provided
-    const fetchProductsByCategorySlug = (setter, slug, limit = 200) => {
-        if (!slug) {
-            return commerce.products.list({ limit: limit }).then(respond => {
-                const newFeatured = respond.data;
-                setter(newFeatured);
-            });
-        }
+    const fetchFeatured = (slug, limit = 200) => {
         return commerce.products.list({ limit: limit, category_slug: slug }).then(respond => {
             const newFeatured = respond.data;
-            setter(newFeatured);
+            setFeatured(newFeatured);
         });
     }
+
+    const [searchQuery, setSearchQuery] = useState('');
 
     const [cart, setCart] = useState({});
     const fetchCart = () => {
@@ -63,14 +58,15 @@ const App = () => {
     useEffect(() => {
         fetchCategories();
         fetchCart();
-        fetchProductsByCategorySlug(setFeatured, 'polecane', 4); //get 4 featured items
+        fetchFeatured('polecane', 4); //get 4 featured items
     }, []);
 
     return (
         <Router>
             <ThemeProvider theme={theme}>
-                <div>
+                <>
                     <Navbar
+                        setSearchQuery={setSearchQuery}
                         totalItems={cart.total_items}
                         categories={categories}
                     />
@@ -80,7 +76,7 @@ const App = () => {
                         </Route>
                         <Route path='/products'>
                             <Products
-                                fetchProductsByCategorySlug={fetchProductsByCategorySlug}
+                                searchQuery={searchQuery}
                                 onAddToCart={handleAddToCart}
                             />
                         </Route>
@@ -97,7 +93,7 @@ const App = () => {
                         </Route>
                     </Switch>
                     <Footer/>
-                </div>
+                </>
             </ThemeProvider>
         </Router>
     )

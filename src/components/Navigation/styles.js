@@ -15,6 +15,7 @@ export default makeStyles((theme) => ({
         alignItems: 'center',
         display: 'flex',
         textDecoration: 'none',
+        padding: theme.spacing(1),
         color: theme.palette.text.primary,
     },
     image: {
@@ -22,9 +23,12 @@ export default makeStyles((theme) => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             display: 'none',
         },
+    },
+    buttons: {
+        display: 'flex',
     },
     search: {
         position: 'relative',
@@ -33,29 +37,36 @@ export default makeStyles((theme) => ({
         '&:hover': {
             backgroundColor: alpha(theme.palette.common.white, 0.25),
         },
-        marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(1),
+            marginLeft: theme.spacing(2),
             width: 'auto',
+            display: 'block',
         },
+        display: 'none',
         margin: theme.spacing(0, 5),
     },
     categories: {
         listStyle: 'none',
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        },
     },
     catLink: {
         textDecoration: 'underline',
         textDecorationColor: 'rgba(255, 255, 255, 0.3)',
         textUnderlineOffset: '2px',
         color: theme.palette.text.primary,
-        margin: theme.spacing(0, 4),
+        margin: theme.spacing(0, 2),
+        [theme.breakpoints.up('lg')]: {
+            margin: theme.spacing(0, 4),
+        },
         fontSize: '1.1rem',
         transition: 'color 100ms, text-decoration 200ms, ease-in',
         '&:hover': {
             color: theme.palette.secondary.main,
             textDecorationColor: theme.palette.secondary.main,
-        }
+        },
     },
     searchIcon: {
         padding: theme.spacing(2),
@@ -75,11 +86,14 @@ export default makeStyles((theme) => ({
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
+        width: '14ch',
+        '&:focus': {
+            width: '18ch',
+        },
+        [theme.breakpoints.up('lg')]: {
             width: '16ch',
             '&:focus': {
-                width: '32ch',
+                width: '28ch',
             },
         },
     },

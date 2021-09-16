@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   root: {
     backgroundColor: theme.palette.background.secondary,
-    minHeight: "75vh",
+    minHeight: "90vh",
   },
   content: {
     margin: '0',
@@ -17,8 +17,12 @@ export default makeStyles((theme) => ({
     opacity: 0.2,
     backgroundColor: theme.palette.text.secondary,
   },
-  categoryName: {
+  text: {
     padding: theme.spacing(4, 0, 1, 10),
     opacity: 0.5,
+  },
+  progress: {
+    margin: '0 auto',
+    marginTop: theme.spacing(5),
   }
 }));
