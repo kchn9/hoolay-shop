@@ -1,18 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(() => ({
-  media: {
-    height: 260,
+export default makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2, 1),
   },
-  cardContent: {
-    display: 'flex',
-    justifyContent: 'space-between',
+  avatarSize: {
+    width: '75px',
+    height: '75px',
   },
-  cartActions: {
-    justifyContent: 'space-between',
+  text: {
+    position: 'relative',
+    bottom: '10px',
+    margin: 0,
   },
-  buttons: {
-    display: 'flex',
-    alignItems: 'center',
+  nameText: {
+    fontSize: '1.8rem',
   },
+  priceText: {
+    fontSize: '1rem',
+    opacity: 0.9,
+  },
+  quantity: {
+    textAlign: 'center'
+  }
 }));

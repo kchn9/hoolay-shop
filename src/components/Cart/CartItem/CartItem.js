@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Button, Card, CardActions, CardContent, CardMedia } from '@material-ui/core';
+import { ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Typography } from '@material-ui/core';
+import { Delete, Add, Remove } from '@material-ui/icons'
 import Utils from '../../../lib/Utils'
 
 import useStyles from './styles';
@@ -9,21 +10,32 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
     const classes = useStyles();
 
     return (
-        <Card>
-            <CardMedia image={item.media.source} alt={item.name} className={classes.media} />
-            <CardContent className={classes.cardContent}>
-                <Typography variant="h4">{item.name}</Typography>
-                <Typography variant="h5">{Utils.beautifyFormattedPrice(item.line_total.formatted_with_symbol)}</Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-                <div className={classes.buttons}>
-                    <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>-</Button>
-                    <Typography>{item.quantity}</Typography>
-                    <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>+</Button>
-                </div>
-                <Button variant="contained" type="button" color="secondary" onClick={() => handleRemoveFromCart(item.id)}>Wyrzuć z koszyka</Button>
-            </CardActions>
-        </Card>
+        <ListItem className={classes.root}>
+            <ListItemAvatar>
+                <Avatar className={classes.avatarSize} alt={item.name} src={item.media.source} />
+            </ListItemAvatar>
+            <ListItemText
+                primary={`${item.quantity} x ${item.name}`}
+                secondary={Utils.beautifyFormattedPrice(item.line_total.formatted_with_symbol)}
+                className={classes.text}
+                classes={{
+                    primary: classes.nameText,
+                    secondary: classes.priceText,
+                }}
+                inset
+            />
+            <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="Dodaj jedną sztukę" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>
+                    <Add color="inherit" />
+                </IconButton>
+                <IconButton edge="end" aria-label="Usuń jedną sztukę" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>
+                    <Remove color="inherit" />
+                </IconButton>
+                <IconButton edge="end" aria-label="Usuń z koszyka" onClick={() => handleRemoveFromCart(item.id)}>
+                    <Delete color="inherit" />
+                </IconButton>
+            </ListItemSecondaryAction>
+        </ListItem>
     )
 }
 

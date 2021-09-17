@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Button, Grid } from '@material-ui/core';
+import { Container, Typography, Button, List, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Utils from '../../lib/Utils';
 
@@ -19,13 +19,15 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
     const FilledCart = () => (
         <>
-            <Grid container spacing={4}>
+            <List>
                 {cart.line_items.map((item) => (
-                    <Grid item xs={12} sm={4} key={item.id}>
-                        <CartItem item={item} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} />
-                    </Grid>
+                    <>
+                        <CartItem  alignItems="flex-start" item={item} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} />
+                        <Divider />
+                    </>
                 ))}
-            </Grid>
+            </List>
+
             <div className={classes.cardDetails}>
                 <Typography variant="h4">
                     Kwota zamówienia: {Utils.beautifyFormattedPrice(cart.subtotal.formatted_with_symbol)}

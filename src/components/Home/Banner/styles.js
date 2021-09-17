@@ -23,11 +23,11 @@ export default makeStyles((theme) => ({
         width: '100%',
         zIndex: 2,
         fontSize: '3rem',
-        color: theme.palette.text.secondary,
+        color: theme.palette.primary.main,
         transform: 'translateY(50%)',
         backgroundColor: '#0f0f0f50',
         opacity: 0.8,
-        textShadow: '#f0f0f0 2px 2px 1px',
+        textShadow: '#f0f0f0 1px 1px 1px',
         textAlign: 'center',
         '&::before': {
             content: "''",
