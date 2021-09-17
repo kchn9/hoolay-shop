@@ -87,7 +87,7 @@ const Products = ({ searchQuery, onAddToCart }) => {
             <Divider variant="middle" className={classes.hr}/>
             <Grid container justifyContent="flex-start" spacing={3} className={classes.content}>
                 {areProductsReady ? (filteredProducts.length > 0 ? filteredProducts.map((product) => (
-                    <Grid item key={product.id} xs={12} sm={6} md={3} xl={2}>
+                    <Grid item key={product.id} xs={12} sm={6} md={4} xl={2}>
                         <Product product={product} onAddToCart={onAddToCart} displayDesc displayAction/>
                     </Grid>
                 )) : <Typography variant="h6" color="primary" className={classes.text}>Przykro nam, żadne produkty nie spełniają Twoich kryteriów.</Typography>) : (

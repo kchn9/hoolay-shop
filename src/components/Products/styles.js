@@ -16,10 +16,20 @@ export default makeStyles((theme) => ({
     margin: theme.spacing(0, 10),
     opacity: 0.2,
     backgroundColor: theme.palette.text.secondary,
+    [theme.breakpoints.down("xs")]: {
+      width: '50%',
+      margin: '0 auto',
+    }
   },
   text: {
     padding: theme.spacing(4, 0, 1, 10),
     opacity: 0.5,
+    [theme.breakpoints.down("xs")]: {
+      padding: theme.spacing(2, 0, 1, 0),
+      width: '100%',
+      textAlign: 'center',
+      fontSize: '0.9rem'
+    }
   },
   progress: {
     margin: '0 auto',
