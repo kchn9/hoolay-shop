@@ -17,12 +17,12 @@ const Home = ({ featured }) => {
                     <Banner />
                 </Grid>
                 <Grid item>
-                    <Typography variant="h3" className={classes.subtitle} gutterBottom>Polecane produkty</Typography>
+                    <Typography variant="h3" className={classes.subtitle}>Polecane produkty</Typography>
                 </Grid>
-                <Grid container justifyContent="center" className={classes.products} spacing={4}>
+                <Grid container justifyContent="center" className={classes.products} spacing={3}>
                         {
                             featured.map((product) => (
-                                <Grid key={product.id} item xs={10} sm={5} xl={3}>
+                                <Grid key={product.id} item xs={11} sm={6} md={5} xl={3}>
                                     <Product product={product}/>
                                 </Grid>
                             ))

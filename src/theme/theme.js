@@ -1,7 +1,8 @@
 import { createTheme } from '@material-ui/core/styles';
+import { responsiveFontSizes } from '@material-ui/core';
 import './fonts.css';
 
-export const theme = createTheme({
+let th = createTheme({
     palette: {
         primary: {
             main: '#0F0F0F',
@@ -28,3 +29,6 @@ export const theme = createTheme({
         fontFamily: ['Urbanist', 'apple-system', 'Arial', 'sans-serif']
     },
 })
+
+const Theme = responsiveFontSizes(th);
+export default Theme;

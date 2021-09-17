@@ -3,7 +3,7 @@ import { commerce } from './lib/Commerce'
 import { Navbar, Products, Cart, Home, Footer, Checkout } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
-import { theme } from './theme/theme';
+import Theme from './theme/theme';
 
 const App = () => {
     const [categories, setCategories] = useState([]);
@@ -63,7 +63,7 @@ const App = () => {
 
     return (
         <Router>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={Theme}>
                 <>
                     <Navbar
                         setSearchQuery={setSearchQuery}

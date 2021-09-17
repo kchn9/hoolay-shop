@@ -32,12 +32,12 @@ export const Drawer = ({ toggleDrawer, categories, open }) => {
                     </Grid>
                     <div style={{ flexGrow: 1 }} />
                     <Grid item>
-                        <IconButton color="inherit">
-                            <Facebook />
+                        <IconButton component="a" href="https://www.instagram.com/" target="_blank">
+                            <Facebook color="inherit"/>
                         </IconButton>
                     </Grid>
                     <Grid item>
-                        <IconButton>
+                        <IconButton component="a" href="https://www.instagram.com/" target="_blank">
                             <Instagram edge='end' color="inherit"/>
                         </IconButton>
                     </Grid>

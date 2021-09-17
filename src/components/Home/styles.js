@@ -12,6 +12,7 @@ export default makeStyles((theme) => ({
       padding: theme.spacing(4),
       color: theme.palette.text.secondary,
       fontWeight: '600',
+      textAlign: 'center',
     },
     products: {
       paddingBottom: theme.spacing(6),

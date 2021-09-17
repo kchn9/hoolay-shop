@@ -1,6 +1,6 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
-import { Grid, Typography, Box } from '@material-ui/core';
+import { CssBaseline, IconButton } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { Instagram, Facebook } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
@@ -12,22 +12,22 @@ const Footer = () => {
     return (
         <footer className={classes.root}>
             <CssBaseline />
-            <Grid container justifyContent="center" spacing={10}>
-                <Grid item>
+            <Grid className={classes.grid} container justifyContent="center" alignItems="center">
+                <Grid item className={classes.link}>
                     <Link to="/faq" className={classes.link}>
                         <Typography variant="subtitle1">
                             Zadawane pytania
                         </Typography>
                     </Link>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.link}>
                     <Link to="/policy" className={classes.link}>
                         <Typography variant="subtitle1">
                             Polityka prywatności
                         </Typography>
                     </Link>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.link}>
                     <Link to="/terms" className={classes.link}>
                         <Typography variant="subtitle1">
                             Regulamin
@@ -39,12 +39,16 @@ const Footer = () => {
                         <Typography variant="subtitle1" className={classes.copyright}>©hoolay</Typography>
                     </Grid>
                     <Grid item className={classes.right}>
-                        <Grid container className={classes.socials} justifyContent="flex-end" spacing={3}>
+                        <Grid container justifyContent="flex-end" spacing={3}>
                             <Grid item>
-                                <Facebook style={{ color: "#fafafa" }} />
+                                <IconButton component="a" href="https://www.facebook.com/" target="_blank" >
+                                    <Facebook color="inherit" />
+                                </IconButton>
                             </Grid>
                             <Grid item>
-                                <Instagram style={{ color: "#fafafa" }} />
+                                <IconButton component="a" href="https://www.instagram.com/" target="_blank">
+                                    <Instagram color="inherit" />
+                                </IconButton>
                             </Grid>
                         </Grid>
                     </Grid>
