@@ -24,13 +24,15 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
                 }}
                 inset
             />
-            <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="Dodaj jedną sztukę" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>
-                    <Add color="inherit" />
-                </IconButton>
-                <IconButton edge="end" aria-label="Usuń jedną sztukę" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>
-                    <Remove color="inherit" />
-                </IconButton>
+            <ListItemSecondaryAction className={classes.actions}>
+                <div className={classes.quantityActions}>
+                    <IconButton edge="end" aria-label="Dodaj jedną sztukę" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>
+                        <Add color="inherit" />
+                    </IconButton>
+                    <IconButton edge="end" aria-label="Usuń jedną sztukę" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>
+                        <Remove color="inherit" />
+                    </IconButton>
+                </div>
                 <IconButton edge="end" aria-label="Usuń z koszyka" onClick={() => handleRemoveFromCart(item.id)}>
                     <Delete color="inherit" />
                 </IconButton>

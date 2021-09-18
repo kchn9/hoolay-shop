@@ -6,27 +6,24 @@ export default makeStyles((theme) => ({
   },
   toolbar: theme.mixins.toolbar,
   title: {
+    textAlign: 'center',
     marginTop: '5%',
-  },
-  emptyButton: {
-    minWidth: '150px',
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: '5px',
-    },
-    [theme.breakpoints.up('xs')]: {
-      marginRight: '20px',
-    },
-  },
-  checkoutButton: {
-    minWidth: '150px',
   },
   link: {
     textDecoration: 'none',
   },
-  cardDetails: {
+  buttons: {
     display: 'flex',
-    marginTop: '10%',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
+    marginTop: '5%',
+    justifyContent: 'flex-end',
+    "& > *": {
+      margin: theme.spacing(2),
+      [theme.breakpoints.down('xs')]: {
+        width: 140,
+        fontSize: '.8rem',
+        margin: theme.spacing(1),
+        padding: theme.spacing(1),
+      }
+    },
+  }
 }));
