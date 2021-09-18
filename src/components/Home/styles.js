@@ -10,7 +10,6 @@ export default makeStyles((theme) => ({
     },
     subtitle: {
       padding: theme.spacing(4),
-      color: theme.palette.text.secondary,
       fontWeight: '600',
       textAlign: 'center',
     },
