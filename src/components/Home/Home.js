@@ -17,7 +17,7 @@ const Home = ({ featured }) => {
                     <Banner />
                 </Grid>
                 <Grid item>
-                    <Typography variant="h3" style={{ color: '#0f0f0f'}} className={classes.subtitle}>Polecane produkty</Typography>
+                    <Typography variant="h3" color="primary" className={classes.subtitle}>Polecane produkty</Typography>
                 </Grid>
                 <Grid container justifyContent="center" className={classes.products} spacing={3}>
                         {
