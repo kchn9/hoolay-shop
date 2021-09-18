@@ -28,6 +28,16 @@ let th = createTheme({
     typography: {
         fontFamily: ['Urbanist', 'apple-system', 'Arial', 'sans-serif']
     },
+    overrides: {
+        MuiInput: {
+            input: {
+                '&:-webkit-autofill': {
+                    '-webkit-box-shadow': '0 0 0 100px #0f0f0f inset',
+                    '-webkit-text-fill-color': '#f0f0f0'
+                }
+            }
+        }
+    }
 })
 
 const Theme = responsiveFontSizes(th);
