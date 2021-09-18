@@ -20,7 +20,7 @@ export const Drawer = ({ toggleDrawer, categories, open }) => {
                 </ListSubheader>
             }>
                 {categories.map((category) => (
-                    <ListItem component={NavLink} to={`/products/${category.slug}`} divider button key={category.id}>
+                    <ListItem component={NavLink} to={`/sklep/${category.slug}`} divider button key={category.id}>
                         <ListItemText>{category.name}</ListItemText>
                     </ListItem>
                 ))}

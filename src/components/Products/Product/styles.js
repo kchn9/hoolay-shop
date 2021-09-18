@@ -6,7 +6,7 @@ export default makeStyles(() => ({
     },
     media: {
         height: 0,
-        paddingTop: '75%', // image ratio
+        paddingTop: '100%', // image ratio
         backgroundPositionY: '50%' // image position
     },
     cardActions: {

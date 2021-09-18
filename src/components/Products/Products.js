@@ -84,11 +84,11 @@ const Products = ({ searchQuery, onAddToCart }) => {
         <main className={classes.root}>
             <div className={classes.toolbar} />
             <Typography variant="h6" color="primary" className={classes.text}>{"Wszystkie produkty" + (isCategorySpecified && categoryName !== undefined ? ` > ${categoryName}` : '' )}</Typography>
-            <Divider variant="middle" color="primary" className={classes.hr}/>
+            <Divider variant="middle" className={classes.hr}/>
             <Grid container justifyContent="flex-start" spacing={3} className={classes.content}>
                 {areProductsReady ? (filteredProducts.length > 0 ? filteredProducts.map((product) => (
                     <Grid item key={product.id} xs={12} sm={6} md={4} xl={2}>
-                        <Product product={product} onAddToCart={onAddToCart} displayDesc displayAction/>
+                        <Product product={product} onAddToCart={onAddToCart} onShop/>
                     </Grid>
                 )) : <Typography variant="h6" color="primary" className={classes.text}>Przykro nam, żadne produkty nie spełniają Twoich kryteriów.</Typography>) : (
                     <CircularProgress className={classes.progress}/>

@@ -9,6 +9,7 @@ const Review = ({ checkoutToken }) => {
     return (
         <>
             <Typography variant="h6" gutterBottom>Podsumowanie zamówienia</Typography>
+            <Divider color="inherit"/>
             <List disablePadding>
                 {checkoutToken.live.line_items.map((product) => (
                     <ListItem key={product.id} style={{ padding: '10px 0' }}>

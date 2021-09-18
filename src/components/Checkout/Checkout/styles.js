@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
     },
     toolbar: theme.mixins.toolbar,
     layout: {
+        minHeight: '75vh',
         marginTop: '5%',
         width: 'auto',
         marginLeft: theme.spacing(2),
@@ -32,6 +33,17 @@ export default makeStyles((theme) => ({
     },
     stepper: {
         padding: theme.spacing(3, 0, 5),
+    },
+    active: {
+        backgroundColor: theme.palette.secondary.main,
+    },
+    complete: {
+        '& > span > span > svg': {
+            color: `${theme.palette.secondary.main} !important`,
+        },
+        '& > span > span > span': {
+            color: `${theme.palette.secondary.main} !important`,
+        }
     },
     buttons: {
         display: 'flex',

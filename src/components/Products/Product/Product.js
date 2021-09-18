@@ -1,11 +1,12 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Fade } from '@material-ui/core';
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Fade, Button, Divider } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 import Utils from '../../../lib/Utils';
 
 import useStyles from './styles';
 
-const Product = ({ product, onAddToCart = (() => {}), displayDesc, displayAction }) => {
+const Product = ({ product, onAddToCart = (() => { }), onShop, onFeatured }) => {
     const classes = useStyles();
 
     return (
@@ -21,15 +22,18 @@ const Product = ({ product, onAddToCart = (() => {}), displayDesc, displayAction
                             {Utils.beautifyFormattedPrice(product.price.formatted_with_symbol)}
                         </Typography>
                     </div>
-                    {displayDesc && <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textPrimary" />}
+                    {onShop && <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textPrimary" />}
                 </CardContent>
-                {displayAction && (
-                    <CardActions disableSpacing className={classes.cardActions}>
-                        <IconButton aria-label="Dodaj do koszyka" onClick={() => { onAddToCart(product.id, 1) }}>
-                            <AddShoppingCart />
-                        </IconButton>
-                    </CardActions>
-                )}
+                <Divider color="inherit"/>
+                <CardActions disableSpacing className={classes.cardActions}>
+                    {onShop && <Button component={Link} to={'/sklep'} variant="text" color="inherit" aria-label="Zobacz więcej">Zobacz więcej</Button>}
+                    {onShop && <div style={{ flexGrow: 1 }} />}
+                    {onShop && (<IconButton aria-label="Dodaj do koszyka" color="inherit" onClick={() => { onAddToCart(product.id, 1) }}>
+                        <AddShoppingCart />
+                    </IconButton>
+                    )}
+                    {onFeatured && <Button component={Link} to={'/sklep'} variant="text" color="inherit" aria-label="Przejdź do sklepu">Przejdź do sklepu</Button>}
+                </CardActions>
             </Card>
         </Fade>
     )

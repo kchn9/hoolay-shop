@@ -74,13 +74,13 @@ const App = () => {
                         <Route exact path="/">
                             <Home featured={featured}/>
                         </Route>
-                        <Route path='/products'>
+                        <Route path='/sklep'>
                             <Products
                                 searchQuery={searchQuery}
                                 onAddToCart={handleAddToCart}
                             />
                         </Route>
-                        <Route path='/cart'>
+                        <Route path='/koszyk'>
                             <Cart
                                 cart={cart}
                                 handleUpdateCartQty={handleUpdateCartQty}
@@ -88,7 +88,7 @@ const App = () => {
                                 handleEmptyCart={handleEmptyCart}
                             />
                         </Route>
-                        <Route path='/checkout'>
+                        <Route path='/zamowienie'>
                             <Checkout cart={cart}/>
                         </Route>
                     </Switch>

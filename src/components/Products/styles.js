@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
   hr: {
     margin: theme.spacing(0, 10),
     opacity: 0.2,
-    backgroundColor: theme.palette.text.secondary,
+    backgroundColor: "#0f0f0f",
     [theme.breakpoints.down("xs")]: {
       width: '50%',
       margin: '0 auto',

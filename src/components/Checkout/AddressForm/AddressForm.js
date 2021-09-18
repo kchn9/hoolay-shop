@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
+import { InputLabel, Select, MenuItem, Button, Grid, Typography, CircularProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import { useForm, FormProvider } from 'react-hook-form';
@@ -100,8 +100,8 @@ const AddressForm = ({ checkoutToken, next }) => {
                     </Grid>
                     <br />
                     <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-                        <Button component={Link} to="/cart" variant="outlined">Wróć do koszyka</Button>
-                        <Button type="submit" variant="contained" color="primary">Dalej</Button>
+                        <Button component={Link} to="/koszyk" variant="outlined">Wróć do koszyka</Button>
+                        <Button type="submit" variant="contained" color="secondary">Dalej</Button>
                     </div>
                 </form>
             </FormProvider>

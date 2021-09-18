@@ -11,9 +11,9 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     if (!cart.line_items) return 'Strona ładuje się dla Ciebie...';
 
     const EmptyCart = () => (
-        <Typography variant="subtitle1">Twój koszyk jest pusty! Gdy tylko dodasz produkty do koszyka, pojawią się tutaj.
+        <Typography style={{ marginTop: '5%' }} variant="subtitle1">Twój koszyk jest pusty! Gdy tylko dodasz produkty do koszyka, pojawią się tutaj.
             <br/>
-            <Link to="/products" className={classes.link}>Powrót do sklepu.</Link>
+            <Link to="/sklep" className={classes.link}>Powrót do sklepu.</Link>
         </Typography>
     );
 
@@ -33,7 +33,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
             <div className={classes.buttons}>
                     <Button className={classes.emptyButton} size='large' type="button" variant="outlined" color="textContrast" aria-label="Wyczyść koszyk" onClick={handleEmptyCart}>Wyczyść koszyk</Button>
-                    <Button component={Link} to="/checkout" className={classes.checkoutButton} size='large' type="button" aria-label="Wyczyść koszyk" variant="contained" color="secondary">Zamów i zapłać</Button>
+                    <Button component={Link} to="/zamowienie" className={classes.checkoutButton} size='large' type="button" aria-label="Wyczyść koszyk" variant="contained" color="secondary">Zamów i zapłać</Button>
             </div>
         </>
     )

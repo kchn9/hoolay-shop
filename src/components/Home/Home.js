@@ -23,7 +23,7 @@ const Home = ({ featured }) => {
                         {
                             featured.map((product) => (
                                 <Grid key={product.id} item xs={11} sm={6} md={5} xl={3}>
-                                    <Product product={product}/>
+                                    <Product product={product} onFeatured/>
                                 </Grid>
                             ))
                         }

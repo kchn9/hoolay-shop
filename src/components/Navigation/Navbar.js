@@ -25,7 +25,7 @@ const Navbar = ({ setSearchQuery, totalItems, categories }) => {
         <>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    {location.pathname.startsWith('/products') && (
+                    {location.pathname.startsWith('/sklep') && (
                         <div>
                             <IconButton onClick={toggleDrawer(open)} className={classes.menuButton} color="inherit" aria-label="Otwórz boczne mennu" >
                                 <Menu />
@@ -33,23 +33,23 @@ const Navbar = ({ setSearchQuery, totalItems, categories }) => {
                             <Drawer toggleDrawer={toggleDrawer} categories={categories} open={open} />
                         </div>
                     )}
-                    <Typography className={classes.title} component={Link} to={location.pathname === '/' ? '/' : '/products'} variant="h4">Hoolay</Typography>
+                    <Typography className={classes.title} component={Link} to={location.pathname === '/' ? '/' : '/sklep'} variant="h4">Hoolay</Typography>
                     <div style={{ flexGrow: 1 }} />
-                    {!location.pathname.startsWith('/products') && (
-                        <IconButton component={Link} to='/products' aria-label="Pokaż sklep" color="secondary">
+                    {!location.pathname.startsWith('/sklep') && (
+                        <IconButton component={Link} to='/sklep' aria-label="Pokaż sklep" color="secondary">
                             <Storefront />
                         </IconButton>
                     )}
-                    {location.pathname.startsWith('/products') && (
+                    {location.pathname.startsWith('/sklep') && (
                         <Grid container component='ul' justifyContent="flex-start" alignItems="center" className={classes.categories}>
                             {categories.map(category => (
                                 <Grid item component='li' key={category.id}>
-                                    <NavLink className={classes.catLink} to={`/products/${category.slug}`}>{category.name}</NavLink>
+                                    <NavLink className={classes.catLink} to={`/sklep/${category.slug}`}>{category.name}</NavLink>
                                 </Grid>
                             ))}
                         </Grid>
                     )}
-                    {location.pathname.startsWith('/products') && (
+                    {location.pathname.startsWith('/sklep') && (
                         <div className={classes.search}>
                             <div aria-label="Szukaj" className={classes.searchIcon}>
                                 <Search />
@@ -72,12 +72,12 @@ const Navbar = ({ setSearchQuery, totalItems, categories }) => {
                             />
                         </div>
                     )}
-                    {location.pathname.startsWith('/products') && (
+                    {location.pathname.startsWith('/sklep') && (
                         <div className={classes.buttons}>
                             <IconButton component={Link} to='/' aria-label="Powrót do strony głównej" color="inherit">
                                 <Home />
                             </IconButton>
-                            <IconButton component={Link} to='/cart' aria-label="Pokaż towary w koszyku" color="inherit">
+                            <IconButton component={Link} to='/koszyk' aria-label="Pokaż towary w koszyku" color="inherit">
                                 <Badge badgeContent={totalItems} color="secondary">
                                     <ShoppingCart />
                                 </Badge>

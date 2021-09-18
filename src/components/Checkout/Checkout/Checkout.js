@@ -55,12 +55,12 @@ const Checkout = ({ cart }) => {
                     <Typography variant="h3" align="center">Zamówienie</Typography>
                     <Stepper activeStep={activeStep} className={classes.stepper}>
                         {steps.map((step) => (
-                            <Step key={step}>
+                            <Step classes={{ completed: classes.complete }} key={step}>
                                 <StepLabel>{step}</StepLabel>
                             </Step>
                         ))}
                     </Stepper>
-                    {activeStep === steps.length ? <Confirmation /> : checkoutToken && <Form />}
+                    {activeStep === steps.length ? <Confirmation /> : checkoutToken ? <Form /> : <div className={classes.spinner}><CircularProgress color="inherit" /></div>}
                 </Paper>
             </main>
         </>
