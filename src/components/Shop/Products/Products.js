@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Divider, Grid, Typography, CircularProgress } from '@material-ui/core';
-import { useLocation } from 'react-router-dom';
-import { commerce } from '../../lib/Commerce';
+import { useParams, Route, Switch } from 'react-router-dom';
+import { commerce } from '../../../lib/Commerce';
 
 import Product from './Product/Product';
+import ProductDetail from './ProductDetail/ProductDetail';
 
-import useStyles from './styles'
+import useStyles from './styles';
 
-const Products = ({ searchQuery, onAddToCart }) => {
+const ALLOWED_CATEGORIES = ['hulajnogi', 'czesci', 'akcesoria'];
+
+export const Products = ({ searchQuery, onAddToCart }) => {
     const classes = useStyles();
-
-    const { pathname } = useLocation();
-    const pathArr = pathname.split('/');
-    const isCategorySpecified = pathArr.length === 3;
-    const categorySlug = isCategorySpecified ? pathArr[2] : '';
+    let { categorySlug } = useParams();
+    categorySlug = ALLOWED_CATEGORIES.includes(categorySlug) ? categorySlug : undefined;
 
     const [categoryName, setCategoryName] = useState('');
     const fetchCategoryNameBySlug = (slug) => {
+        if (!slug) return setCategoryName(undefined);
         return commerce.categories.retrieve(slug, { type: 'slug' }).then(category => {
             setCategoryName(category.name)
-        }).catch(() => {
-            setCategoryName(undefined)
         })
     }
 
@@ -73,7 +72,7 @@ const Products = ({ searchQuery, onAddToCart }) => {
     }, [])
 
     useEffect(() => {
-        isCategorySpecified && fetchCategoryNameBySlug(categorySlug);
+        fetchCategoryNameBySlug(categorySlug);
     }, [categorySlug]);
 
     useEffect(() => {
@@ -81,21 +80,26 @@ const Products = ({ searchQuery, onAddToCart }) => {
     }, [categorySlug, searchQuery, allProducts])
 
     return (
-        <main className={classes.root}>
-            <div className={classes.toolbar} />
-            <Typography variant="h6" color="primary" className={classes.text}>{"Wszystkie produkty" + (isCategorySpecified && categoryName !== undefined ? ` > ${categoryName}` : '' )}</Typography>
-            <Divider variant="middle" className={classes.hr}/>
-            <Grid container justifyContent="flex-start" spacing={3} className={classes.content}>
-                {areProductsReady ? (filteredProducts.length > 0 ? filteredProducts.map((product) => (
-                    <Grid item key={product.id} xs={12} sm={6} md={4} xl={2}>
-                        <Product product={product} onAddToCart={onAddToCart} onShop/>
+        <>
+            <Switch>
+                <Route exact path="/sklep/:categoryId">
+                    <Typography variant="h6" color="primary" className={classes.text}>{"Wszystkie produkty" + (categoryName !== undefined ? ` > ${categoryName}` : '' )}</Typography>
+                    <Divider variant="middle" className={classes.hr}/>
+                    <Grid container justifyContent="flex-start" spacing={3} className={classes.content}>
+                        {areProductsReady ? (filteredProducts.length > 0 ? filteredProducts.map((product) => (
+                            <Grid item key={product.id} xs={12} sm={6} md={4} xl={2}>
+                                <Product categorySlug={categorySlug} product={product} onAddToCart={onAddToCart} onShop/>
+                            </Grid>
+                        )) : <Typography variant="h6" color="primary" className={classes.text}>Przykro nam, żadne produkty nie spełniają Twoich kryteriów.</Typography>) : (
+                            <CircularProgress className={classes.progress}/>
+                        )}
                     </Grid>
-                )) : <Typography variant="h6" color="primary" className={classes.text}>Przykro nam, żadne produkty nie spełniają Twoich kryteriów.</Typography>) : (
-                    <CircularProgress className={classes.progress}/>
-                )}
-            </Grid>
-        </main>
-    )
-}
+                </Route>
+                <Route path="/sklep/:categoryId/:productId">
+                        <ProductDetail />
+                </Route>
+            </Switch>
 
-export default Products;
+        </>
+    )
+};

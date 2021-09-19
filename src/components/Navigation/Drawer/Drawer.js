@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Facebook, Instagram } from '@material-ui/icons';
 import { useStyles } from './styles'
 
-export const Drawer = ({ toggleDrawer, categories, open }) => {
+const Drawer = ({ toggleDrawer, categories, open }) => {
     const classes = useStyles();
 
     const list = () => (
@@ -56,3 +56,5 @@ export const Drawer = ({ toggleDrawer, categories, open }) => {
         </SwipeableDrawer>
     )
 }
+
+export default Drawer;

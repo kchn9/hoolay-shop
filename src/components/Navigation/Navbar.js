@@ -1,16 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, Typography, InputBase, Grid } from '@material-ui/core';
 import { ShoppingCart, Storefront, Search, Home, Menu } from '@material-ui/icons';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
-import { Drawer } from './Drawer/Drawer'
+import { commerce } from '../../lib/Commerce';
+
+import Drawer from './Drawer/Drawer'
 
 import useStyles from './styles';
 
-const Navbar = ({ setSearchQuery, totalItems, categories }) => {
+const Navbar = ({ setSearchQuery, totalItems }) => {
     const classes = useStyles();
     const location = useLocation();
     const { control } = useForm();
+
+    const [categories, setCategories] = useState([]);
+    //gets categories without featured products
+    const fetchCategories = () => {
+        return commerce.categories.list({ depth: 3 }).then((respond) => {
+            const newCategories = respond.data;
+            const remId = newCategories.findIndex(category => category.slug === 'polecane');
+            newCategories.splice(remId, 1)
+            setCategories(newCategories.reverse());
+        })
+    }
+
+    useEffect(() => {
+        fetchCategories();
+    }, [])
 
     const [open, setOpen] = useState(false);
 
