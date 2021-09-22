@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
         },
         [theme.breakpoints.down("xs")]: {
             flexDirection: 'column',
-            height: '90vh',
+            height: '80vh',
         }
     },
     gallery:{

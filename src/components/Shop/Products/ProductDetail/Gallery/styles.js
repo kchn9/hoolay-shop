@@ -6,12 +6,16 @@ export default makeStyles((theme) => ({
         height: '80vh',
         overflow: 'hidden',
         aspectRatio: '1 / 1',
+        backgroundColor: 'white',
     },
     root: {
         position: 'relative',
         height: '100%',
         overflow: 'hidden',
         aspectRatio: '1 / 1',
+        [theme.breakpoints.down("xs")]: {
+            aspectRatio: '0',
+        }
     },
     image: {
         position: 'absolute',
@@ -21,6 +25,10 @@ export default makeStyles((theme) => ({
         objectFit: 'contain',
         transform: 'translateX(-50%)',
         transition: 'opacity 200ms ease-in',
+        [theme.breakpoints.down("xs")]: {
+            height: '100%',
+            width: '100%',
+        }
     },
     button: {
         position: 'absolute',

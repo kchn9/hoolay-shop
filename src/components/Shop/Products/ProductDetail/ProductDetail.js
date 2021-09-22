@@ -33,11 +33,11 @@ const ProductDetail = ({ onAddToCart }) => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
-      setOpen(true);
+        if (window.innerWidth > 640) setOpen(true);
     };
 
     const handleClose = () => {
-      setOpen(false);
+        setOpen(false);
     };
 
     useEffect(() => {
