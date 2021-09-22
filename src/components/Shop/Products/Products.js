@@ -13,8 +13,10 @@ const ALLOWED_CATEGORIES = ['hulajnogi', 'czesci', 'akcesoria'];
 export const Products = ({ searchQuery, onAddToCart }) => {
     const classes = useStyles();
     let { categorySlug } = useParams();
+    // allow only main categories of products - if any not allowed category comes then show all products
     categorySlug = ALLOWED_CATEGORIES.includes(categorySlug) ? categorySlug : undefined;
 
+    // if categorySlug is undefined categoryName is undefined
     const [categoryName, setCategoryName] = useState('');
     const fetchCategoryNameBySlug = (slug) => {
         if (!slug) return setCategoryName(undefined);
@@ -22,6 +24,7 @@ export const Products = ({ searchQuery, onAddToCart }) => {
             setCategoryName(category.name)
         })
     }
+    const isCategoryNameReady = categoryName !== undefined;
 
     const [allProducts, setAllProducts] = useState([]);
     const fetchAllProducts = () => {
@@ -32,6 +35,7 @@ export const Products = ({ searchQuery, onAddToCart }) => {
     }
     const areProductsReady = allProducts.length !== 0;
 
+    // if categorySlug is undefined show allProducts
     const [filteredProducts, setFilteredProducts] = useState([]);
     const filterProducts = (slug, query) => {
         if (slug && query) {
@@ -72,6 +76,7 @@ export const Products = ({ searchQuery, onAddToCart }) => {
     }, [])
 
     useEffect(() => {
+        setCategoryName(undefined); //hide categoryName on change
         fetchCategoryNameBySlug(categorySlug);
     }, [categorySlug]);
 
@@ -79,24 +84,31 @@ export const Products = ({ searchQuery, onAddToCart }) => {
         setFilteredProducts(filterProducts(categorySlug, searchQuery));
     }, [categorySlug, searchQuery, allProducts])
 
+    //if no product specified render products OR if specified show product
     return (
         <>
             <Switch>
-                <Route exact path="/sklep/:categoryId">
-                    <Typography variant="h6" color="primary" className={classes.text}>{"Wszystkie produkty" + (categoryName !== undefined ? ` > ${categoryName}` : '' )}</Typography>
+                <Route exact path="/sklep/:categorySlug">
+                    {/* if categorySlug is undefined show only general category */}
+                    <Typography variant="h5" color="primary" className={classes.text}>{"Wszystkie produkty" + (isCategoryNameReady ? ` > ${categoryName}` : '' )}</Typography>
                     <Divider variant="middle" className={classes.hr}/>
                     <Grid container justifyContent="flex-start" spacing={3} className={classes.content}>
-                        {areProductsReady ? (filteredProducts.length > 0 ? filteredProducts.map((product) => (
-                            <Grid item key={product.id} xs={12} sm={6} md={4} xl={2}>
-                                <Product categorySlug={categorySlug} product={product} onAddToCart={onAddToCart} onShop/>
-                            </Grid>
-                        )) : <Typography variant="h6" color="primary" className={classes.text}>Przykro nam, żadne produkty nie spełniają Twoich kryteriów.</Typography>) : (
-                            <CircularProgress className={classes.progress}/>
-                        )}
+                        {areProductsReady ? //check if allProducts are already fetched
+                            (filteredProducts.length > 0 ? //if yes check if any produts match filter
+                                filteredProducts.map((product) => (
+                                    <Grid item key={product.id} xs={12} sm={6} md={4} xl={2}>
+                                        <Product product={product} onAddToCart={onAddToCart} onShop/>
+                                    </Grid>
+                                ))
+                                //if no products match filter inform user
+                            : <Typography variant="h6" color="primary" className={classes.text}>Przykro nam, żadne produkty nie spełniają Twoich kryteriów.</Typography>)
+                            //if allProducts are not ready show progress circle
+                        : <CircularProgress className={classes.progress}/>
+                        }
                     </Grid>
                 </Route>
-                <Route path="/sklep/:categoryId/:productId">
-                        <ProductDetail />
+                <Route path="/sklep/:categorySlug/:productId">
+                        <ProductDetail onAddToCart={onAddToCart}/>
                 </Route>
             </Switch>
 

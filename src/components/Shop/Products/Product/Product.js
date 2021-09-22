@@ -1,21 +1,26 @@
 import React from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Fade, Button, Divider } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Utils from '../../../../lib/Utils';
 
 import useStyles from './styles';
 
 const Product = ({ product, onAddToCart, onShop, onFeatured }) => {
     const classes = useStyles();
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push(`/sklep/${categorySlug}/${product.id}`);
+    }
 
     // do not use featured category to show more details about product
-    const categorySlug = product.categories[0].slug === "polecane" && product.categories[1].slug;
+    const categorySlug = product.categories[0].slug === "polecane" ? product.categories[1].slug : product.categories[0].slug;
 
     return (
         <Fade in timeout={500} >
             <Card className={classes.root}>
-                <CardMedia className={classes.media} image={product.media.source} title={product.name} />
+                <CardMedia onClick={() => handleClick()} className={classes.media} image={product.media.source} title={product.name} />
                 <CardContent >
                     <div className={classes.cardContent}>
                         <Typography variant="h6" gutterBottom>
@@ -25,7 +30,6 @@ const Product = ({ product, onAddToCart, onShop, onFeatured }) => {
                             {Utils.beautifyFormattedPrice(product.price.formatted_with_symbol)}
                         </Typography>
                     </div>
-                    {onShop && <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textPrimary" />}
                 </CardContent>
                 <Divider color="inherit"/>
                 <CardActions disableSpacing className={classes.cardActions}>

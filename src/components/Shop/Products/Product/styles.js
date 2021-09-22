@@ -7,7 +7,10 @@ export default makeStyles(() => ({
     media: {
         height: 0,
         paddingTop: '100%', // image ratio
-        backgroundPositionY: '50%' // image position
+        backgroundPositionY: '50%', // image position
+        "&:hover": {
+            cursor: 'pointer',
+        }
     },
     cardActions: {
         display: 'flex',

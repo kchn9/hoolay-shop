@@ -18,6 +18,7 @@ const Home = () => {
             setFeatured(newFeatured);
         });
     }
+    const isFeaturedReady = featured.length > 0;
 
     useEffect(() => {
         fetchFeatured()
@@ -31,7 +32,7 @@ const Home = () => {
                     <Banner />
                 </Grid>
                 <Grid item>
-                    <Typography variant="h3" color="primary" className={classes.subtitle}>Polecane produkty</Typography>
+                    {isFeaturedReady && <Typography variant="h3" color="primary" className={classes.subtitle}>Polecane produkty</Typography>}
                 </Grid>
                 <Grid container justifyContent="center" className={classes.products} spacing={3}>
                         {

@@ -28,7 +28,7 @@ const Banner = () => {
     return (
         <figure className={classes.content}>
             {srcs.map((_, id) => (
-                <img src={srcs[id]} className={`${classes.image} ${visibleId === id ? classes.shown : classes.hidden}`}></img>
+                <img alt="Banner sklepu Hoolay" src={srcs[id]} className={`${classes.image} ${visibleId === id ? classes.shown : classes.hidden}`}></img>
             ))}
             <Typography className={classes.caption} component="figcaption" variant="caption">Hoolay</Typography>
         </figure>

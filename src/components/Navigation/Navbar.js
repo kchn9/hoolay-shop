@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, Typography, InputBase, Grid } from '@material-ui/core';
-import { ShoppingCart, Storefront, Search, Home, Menu } from '@material-ui/icons';
+import { ShoppingCart, Store, Search, Home, Menu } from '@material-ui/icons';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { commerce } from '../../lib/Commerce';
@@ -54,7 +54,7 @@ const Navbar = ({ setSearchQuery, totalItems }) => {
                     <div style={{ flexGrow: 1 }} />
                     {!location.pathname.startsWith('/sklep') && (
                         <IconButton component={Link} to='/sklep' aria-label="Pokaż sklep" color="secondary">
-                            <Storefront />
+                            <Store />
                         </IconButton>
                     )}
                     {location.pathname.startsWith('/sklep') && (

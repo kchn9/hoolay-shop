@@ -14,7 +14,7 @@ let th = createTheme({
         },
         text: {
             primary: '#f0f0f0',
-            secondary: '#f0f0f0',
+            secondary: '#0f0f0f',
         },
         background: {
             default: '#0f0f0f',

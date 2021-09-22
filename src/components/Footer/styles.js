@@ -20,6 +20,9 @@ export default makeStyles((theme) => ({
         padding: theme.spacing(5),
         [theme.breakpoints.down('sm')]: {
             padding: theme.spacing(3),
+            "& > h6": {
+                fontSize: '.9rem'
+            }
         },
         [theme.breakpoints.down('xs')]: {
             padding: theme.spacing(1),
