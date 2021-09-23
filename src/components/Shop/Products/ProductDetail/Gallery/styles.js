@@ -15,6 +15,7 @@ export default makeStyles((theme) => ({
         aspectRatio: '1 / 1',
         [theme.breakpoints.down("xs")]: {
             aspectRatio: '0',
+            height: '50vh',
         }
     },
     image: {

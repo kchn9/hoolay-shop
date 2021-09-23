@@ -24,11 +24,14 @@ export default makeStyles((theme) => ({
         },
         [theme.breakpoints.down("xs")]: {
             flexDirection: 'column',
-            height: '103vh',
+            height: 'unset',
         }
     },
-    gallery:{
+    gallery: {
         height: '100%',
+        [theme.breakpoints.down("xs")]: {
+            padding: '8px !important',
+        }
     },
     content: {
         flexGrow: 1,
@@ -64,6 +67,10 @@ export default makeStyles((theme) => ({
         "& > button": {
             width: '90%',
             margin: `${theme.spacing(1)}px 0`,
+        },
+        [theme.breakpoints.down("xs")]: {
+            position: 'relative',
+            paddingTop: '7%',
         }
     },
 }));
